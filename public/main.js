@@ -1,7 +1,7 @@
-const form = document.getElementById('vote-form');
+const form = document.getElementById('form');
 
 form.addEventListener('submit', (e) => {
-    const option =document.querySelector('input[name=star]:checked').value;
+    const option = document.querySelector('input[name=star]:checked').value;
     const data = { star: option }
     // data that will be sent with post request
 
@@ -12,6 +12,33 @@ form.addEventListener('submit', (e) => {
             'Content-Type': 'application/json'
         })
     }).then(res => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.log(err))
+    .catch(err => console.log(err))
+
+  e.preventDefault();
 });
+
+let dataPoints = [
+    { label: 'Beyonce', y: 0 },
+    { label: 'Mariah', y: 0 },
+    { label: 'Rihanna', y: 0 },
+    { label: 'Denu', y: 0 },
+];
+
+const chartContainer = document.querySelector('#chart-container');
+
+if(chartContainer) {
+    const chart = new CanvasJS.Chart("chart-container", {
+        animationEnabled: true,
+        theme: 'light2',
+        title: {
+            text: 'Pop Star Results'
+        },
+        data: [
+            {
+                type: 'column',
+                dataPoints: dataPoints
+            }
+        ]
+    });
+    chart.render();
+}
