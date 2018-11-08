@@ -4,11 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link src="https://code.jquery.com/jquery-3.3.1.min.js">
-    <script rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Fierce</title>
 </head>
 <body>
-    <h2>Pop Star Voting</h2>
+    <div class="container">
+        <h2>Pop Vote</h2>
+        <p>Who is you favorite popstar?</p>
+        <form id="vote-for">
+            <p>
+                <input type="radio" name="star" id="beyonce" value="Beyonce">
+                <label for="beyonce">Beyonce</label>
+            </p>
+            <p>
+                <input type="radio" name="star" id="mariah" value="Mariah">
+                <label for="mariah">Mariah Carey</label>
+
+            </p>
+            <p>
+                <input type="radio" name="star" id="demi-lovato" value="Demi">
+                <label for="demi-lavato">Demi Lovato</label>
+
+            </p>
+            <p>
+                <input type="radio" name="star" id="rihanna" value="Rihanna">
+                <label for="rihanna">RiRi</label>
+            </p>
+
+            <input type="submit" value="Vote" class="btn">
+        </form>
+
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </body>
 </html>
