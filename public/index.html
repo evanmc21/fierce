@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Fierce</title>
 </head>
@@ -12,6 +11,7 @@
     <div class="container">
         <h2>Pop Vote</h2>
         <p>Who is you favorite popstar?</p>
+        <form>
         <form id="vote-for">
             <p>
                 <input type="radio" name="star" id="beyonce" value="Beyonce">
@@ -31,14 +31,20 @@
                 <input type="radio" name="star" id="rihanna" value="Rihanna">
                 <label for="rihanna">RiRi</label>
             </p>
-
-            <input type="submit" value="Vote" class="btn">
+            <input class="btn" type="submit" value="Vote">
         </form>
 
+        <br>
+        <br>
+        <br>
+        <div class="chart-container" style="height: 300px;width:100%"></div>
     </div>
 
-
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pusher/4.3.1/json2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
