@@ -8,7 +8,7 @@
   },
   "author": "Evan Candler",
   "license": "ISC",
-  "engine": {
+  "engines": {
       "node": "6.11.2"
   },
   "dependencies": {
