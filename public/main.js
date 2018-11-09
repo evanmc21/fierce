@@ -17,51 +17,64 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     });
 
+    // get votes
+fetch("http://localhost:3000/poll")
+  .then(res => res.json())
+  .then(data => {
+    const votes = data.votes;
+    const allVotes = votes.length;
+    const voteCounts = votes.reduce(
+      (acc, vote) => (
+        (acc[vote.star] = (acc[vote.star] || 0) + parseInt(vote.points)), acc
+      ),
+      {}
+    );
+
     let dataPoints = [
-        { label: 'Beyonce', y: 0 },
-        { label: 'Mariah', y: 0 },
-        { label: 'Rihanna', y: 0 },
-        { label: 'Demi', y: 0 },
+      { label: "Beyonce", y: voteCounts.Beyonce },
+      { label: "Mariah", y: voteCounts.Mariah },
+      { label: "Rihanna", y: voteCounts.Rihanna },
+      { label: "Demi", y: voteCounts.Demi }
     ];
 
-    const chartContainer = document.querySelector('#chart-container');
+    const chartContainer = document.querySelector("#chart-container");
 
-    if(chartContainer) {
-        const chart = new CanvasJS.Chart("chart-container", {
-            animationEnabled: true,
-            theme: 'light2',
-            title: {
-                text: 'Pop Star Results'
-            },
-            data: [
-                {
-                    type: 'column',
-                    dataPoints: dataPoints
-                }
-            ]
+    if (chartContainer) {
+      const chart = new CanvasJS.Chart("chart-container", {
+        animationEnabled: true,
+        theme: "light2",
+        title: {
+          text: `Total Votes ${allVotes}`
+        },
+        data: [
+          {
+            type: "column",
+            dataPoints: dataPoints
+          }
+        ]
+      });
+      chart.render();
+
+      Pusher.logToConsole = true;
+
+      var pusher = new Pusher("f464853f6e96d7521429", {
+        cluster: "us2",
+        encrypted: true
+      });
+
+      var channel = pusher.subscribe("star-poll");
+      channel.bind("star-vote", function(data) {
+        // manipulate data points
+        dataPoints = dataPoints.map(x => {
+          if (x.label == data.star) {
+            // append data
+            x.y += data.points;
+            return x;
+          } else {
+            return x;
+          }
         });
         chart.render();
-
-
-        Pusher.logToConsole = true;
-
-        var pusher = new Pusher('f464853f6e96d7521429', {
-            cluster: 'us2',
-            encrypted: true
-        });
-
-        var channel = pusher.subscribe('star-poll');
-        channel.bind('star-vote', function (data) {
-            // manipulate data points
-            dataPoints = dataPoints.map( x => {
-                if(x.label == data.star) {
-                // append data
-                x.y += data.points;
-                return x;
-                } else {
-                    return x;
-                }
-            });
-            chart.render();
-        });
+      });
     }
+  });
