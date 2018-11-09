@@ -34,7 +34,8 @@ fetch("http://localhost:3000/poll")
       { label: "Beyonce", y: voteCounts.Beyonce },
       { label: "Mariah", y: voteCounts.Mariah },
       { label: "Rihanna", y: voteCounts.Rihanna },
-      { label: "Demi", y: voteCounts.Demi }
+      { label: "Demi", y: voteCounts.Demi },
+      { label: "T.Swift", y: voteCounts.Taylor}
     ];
 
     const chartContainer = document.querySelector("#chart-container");
@@ -54,8 +55,6 @@ fetch("http://localhost:3000/poll")
         ]
       });
       chart.render();
-
-      Pusher.logToConsole = true;
 
       var pusher = new Pusher("f464853f6e96d7521429", {
         cluster: "us2",

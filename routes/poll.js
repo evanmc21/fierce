@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
 const Pusher = require('pusher');
 const Vote = require('../models/Vote');
+const keys = require('../config/keys')
 
 var pusher = new Pusher({
-    appId: '643445',
-    key: 'f464853f6e96d7521429',
-    secret: '5e68b67e4fd58f3e0589',
-    cluster: 'us2',
+    appId: keys.appID,
+    key: keys.key,
+    secret: keys.secret,
+    cluster: keys.cluster,
     encrypted: true
 });
 
