@@ -9,7 +9,7 @@ const app = express();
 const poll = require('./routes/poll');
 
 // establish public folder
-app.use(express.static(path.join(__dirname + 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // parser middleware
 app.use(bodyParser.json());
