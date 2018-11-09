@@ -8,6 +8,10 @@
   },
   "author": "Evan Candler",
   "license": "ISC",
+  "engine": {
+      "node": "6.11.2"
+  },
+
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
