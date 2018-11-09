@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Pusher = require('pusher');
-const Vote = require('../models/vote')
+const Vote = require('../models/Vote');
 
 var pusher = new Pusher({
     appId: '643445',
@@ -13,7 +13,7 @@ var pusher = new Pusher({
 });
 
 router.get('/', (req, res) => {
-    res.send('POLL');
+    Vote.find().then(votes => res.json({ success: true, votes: votes }));
 });
 
 router.post('/', (req, res) => {
