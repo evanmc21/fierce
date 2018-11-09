@@ -17,7 +17,7 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     });
 
-    // get votes
+
 fetch("http://localhost:3000/poll")
   .then(res => res.json())
   .then(data => {
